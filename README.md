@@ -14,4 +14,4 @@ Current sequence: ![](https://img.shields.io/badge/random-C-brightgreen)
 
 ## Contents
 
-* [496.C](496-C/removingColumns.cpp)
+* [496.C](496-C/removingColumns.cpp) <details><summary>HINT</summary>Brute Force</details>
