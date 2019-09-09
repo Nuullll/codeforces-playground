@@ -52,6 +52,7 @@ int removingColumns(int n, int m, vector<string>& table) {
 
             // deletion needed
             remove = true;
+            break;
         }
 
         if (remove) ++count;
