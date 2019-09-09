@@ -14,4 +14,11 @@ Current sequence: ![](https://img.shields.io/badge/random-C-brightgreen)
 
 ## Contents
 
-* [496.C](496-C/removingColumns.cpp) <details><summary>HINT</summary>Brute Force</details>
+* [496.C](496-C/removingColumns.cpp) <details>
+    <summary>HINT</summary>
+    Brute Force
+</details>
+* [1141.C](1141-C/restorePermutation.cpp) <details>
+    <summary>HINT</summary>
+    Hashset
+</details>
