@@ -31,9 +31,9 @@ istream& operator >> (istream& os, vector<T>& arr) {
  * Solution goes here.
  */
 int log2(int x) {
-	if (x <= 1) return 0;
+    if (x <= 1) return 0;
 
-	return 1 + log2(x>>1);
+    return 1 + log2(x>>1);
 }
 
 int numberOfGoodSubstrings(string& s) {
@@ -41,33 +41,33 @@ int numberOfGoodSubstrings(string& s) {
 
     if (n == 1 && s[0] == '0') return 0;
 
-    vector<int> contZeros(n);
+    vector<int> contZeros(n+1);
 
     int count = 0;
     for (int i = 0; i < n; ++i) {
-    	if (s[i] == '0') ++count;
-    	else count = 0;
+        if (s[i] == '0') ++count;
+        else count = 0;
 
-    	contZeros[i] = count;
+        contZeros[i+1] = count;
     }
 
     // consider the number of good substrings end at index i
     int res = s[0] == '1' ? 1 : 0;
     for (int i = 1; i < n; ++i) {
-    	int max_len = i + 1;
-    	int left_flag = i - log2(max_len);
+        int max_len = i + 1;
+        int left_flag = max(0, i - log2(max_len));
 
-   		int j = i;
-   		int x = 0;
-   		while (j >= left_flag) {
-   			if (s[j] == '1') {
-   				x += 1<<(j-i);
-   				if (x > max_len) break;
-   				if (contZeros[j-1] >= x-(i-j+1)) ++res;
-   			}
+        int j = i;
+        int x = 0;
+        while (j >= left_flag) {
+            if (s[j] == '1') {
+                x += 1<<(i-j);
+                if (x > max_len) break;
+                if (contZeros[j] >= x-(i-j+1)) ++res;
+            }
 
-			j -= contZeros[j-1] + 1;
-   		}
+            j -= contZeros[j] + 1;
+        }
     }
 
     return res;
@@ -81,10 +81,10 @@ int main() {
     cin >> t;
 
     for (int i = 0; i < t; ++i) {
-    	string s;
-    	cin >> s;
+        string s;
+        cin >> s;
 
-    	cout << numberOfGoodSubstrings(s) << endl;
+        cout << numberOfGoodSubstrings(s) << endl;
     }
 
     return 0;
